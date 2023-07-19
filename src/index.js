@@ -1,7 +1,8 @@
 import axios from 'axios';
 import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
-import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
+// import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
+import * as catApi from './cat-api.js';
 
 const API_KEY =
     'live_bvPUqrWOT8Z9DgXgZnTWdVdqe3sWFdgkS0hBkbyUTOm1BSAUnuZhETMnPiGDcgr1';
