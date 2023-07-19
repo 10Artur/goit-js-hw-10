@@ -8,6 +8,9 @@ function fetchBreeds() {
             'x-api-key': API_KEY,
         },
     }).then(response => {
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
         return response.json();
     });
 }
