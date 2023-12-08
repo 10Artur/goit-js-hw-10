@@ -54,6 +54,11 @@ function hideCatInfo() {
 }
 
 import { fetchBreeds } from './cat-api.js';
+// fetchBreeds()
+//     .then(() => populateBreeds(breeds), (selectContainer.style.display = 'block'))
+//     .catch(error => console.error(error), showError())
+//     .finally(() => hideLoader());
+
 // async function fetchBreeds() {
 //     try {
 //         const response = await axios.get('https://api.thecatapi.com/v1/breeds');
@@ -69,11 +74,29 @@ import { fetchBreeds } from './cat-api.js';
 // }
 
 import { fetchCatByBreed } from './cat-api.js';
+
 // async function fetchCatByBreed(breedId) {
 //     try {
 //         const response = await axios.get(
 //             `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`
 //         );
+//         const catInfo = {
+//             url: response.data[0].url,
+//             breed: response.data[0].breeds[0].name,
+//             description: response.data[0].breeds[0].description,
+//             temperament: response.data[0].breeds[0].temperament,
+//         };
+//         showCatInfo(catInfo);
+//     } catch (error) {
+//         console.error(error);
+//         showError();
+//     } finally {
+//         hideLoader();
+//     }
+// }
+
+// function fetchCatByBreed(breedId) {
+//     try {
 //         const catInfo = {
 //             url: response.data[0].url,
 //             breed: response.data[0].breeds[0].name,
@@ -104,4 +127,7 @@ selectElement.addEventListener('change', function() {
 selectContainer.style.display = 'none';
 showLoader();
 
-fetchBreeds();
+fetchBreeds()
+    .then(() => (selectContainer.style.display = 'block'))
+    .catch(error => showError())
+    .finally(() => hideLoader());
